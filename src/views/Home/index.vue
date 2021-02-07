@@ -14,11 +14,13 @@ import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import HomeContact from './HomeContact.vue'
 import HomeHeader from './HomeHeader.vue'
+import useModal from '../../hooks/useModal'
 
 export default {
   components: { HomeContact, HomeHeader },
   setup() {
     const router = useRouter()
+    const modal = useModal()
     const currentYear = computed(() => {
       const date = new Date()
       return date.getFullYear()
@@ -29,9 +31,17 @@ export default {
       if (token) router.push({ name: 'Feeback' })
     })
 
-    function handleLogin() {}
+    function handleLogin() {
+      modal.open({
+        component: 'ModalLogin',
+      })
+    }
 
-    function handleAccountCreate() {}
+    function handleAccountCreate() {
+      modal.open({
+        component: 'ModalCreateAccount',
+      })
+    }
 
     return {
       currentYear,

@@ -6,11 +6,15 @@
           <span class="font-pacifico text-white text-4xl">opinion</span>
         </div>
         <div class="flex">
-          <button class="px-6 py-2 text-white rounded-full focus:outline-none">
+          <button
+            class="px-6 py-2 text-white rounded-full focus:outline-none font-bold"
+            @click="() => emit('createAccount')"
+          >
             Crie uma conta
           </button>
           <button
-            class="px-6 py-2 bg-white rounded-full text-brand-main focus:outline-none"
+            class="px-6 py-2 bg-white rounded-full text-brand-main focus:outline-none font-bold"
+            @click="() => emit('login')"
           >
             Entrar
           </button>
@@ -48,7 +52,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  setup(_, { emit }) {
+    return { emit }
+  },
+}
 </script>
 
 <style lang="postcss" scoped>
