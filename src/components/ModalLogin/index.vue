@@ -17,11 +17,11 @@
         name="email"
         type="email"
         class="block w-full px-4 py-3 text-lg bg-gray-100 border-2 border-transparent rounded"
-        :class="{ 'border-brand-danger': !!state.email.errorMessage }"
+        :class="{ 'border-brand-danger': Boolean(state.email.errorMessage) }"
         placeholder="seu@email.com"
         v-model="state.email.value"
       />
-      <span v-if="!!state.email.errorMessage" class="block font-medium text-brand-danger">
+      <span v-if="Boolean(state.email.errorMessage)" class="block font-medium text-brand-danger">
         {{ state.email.errorMessage }}
       </span>
     </label>
@@ -32,11 +32,11 @@
         name="password"
         type="password"
         class="block w-full px-4 py-3 text-lg bg-gray-100 border-2 border-transparent rounded"
-        :class="{ 'border-brand-danger': !!state.password.errorMessage }"
+        :class="{ 'border-brand-danger': Boolean(state.password.errorMessage) }"
         placeholder="********"
         v-model="state.password.value"
       />
-      <span v-if="!!state.password.errorMessage" class="block font-medium text-brand-danger">
+      <span v-if="Boolean(state.password.errorMessage)" class="block font-medium text-brand-danger">
         {{ state.password.errorMessage }}
       </span>
     </label>
@@ -111,12 +111,12 @@ export default {
         })
 
         window.localStorage.setItem('token', data.token)
-        router.push({ name: 'Feedbacks' })
+        router.push({ name: 'Credentials' })
         state.isLoading = false
         modal.close()
       } catch (error) {
         state.isLoading = false
-        state.hasError = !!error
+        state.hasError = Boolean(error)
 
         toast.error(errorToastMessage[error.response.status])
       }

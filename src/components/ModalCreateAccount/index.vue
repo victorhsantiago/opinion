@@ -136,7 +136,7 @@ export default {
         })
 
         window.localStorage.setItem('token', data.token)
-        router.push({ name: 'Feedbacks' })
+        router.push({ name: 'Credentials' })
         state.isLoading = false
         modal.close()
       } catch (error) {

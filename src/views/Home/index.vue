@@ -28,7 +28,7 @@ export default {
 
     onMounted(() => {
       const token = window.localStorage.getItem('token')
-      if (token) router.push({ name: 'Feeback' })
+      if (token) router.push({ name: 'Credentials' })
     })
 
     function handleLogin() {
